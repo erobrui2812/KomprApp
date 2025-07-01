@@ -11,19 +11,6 @@ services:
     networks:
       - komprapp_network
 
-  web:
-    image: nginx:latest
-    container_name: komprapp_web
-    ports:
-      - "8000:80"
-    volumes:
-      - ./backend:/var/www
-      - ./docker/nginx/conf.d:/etc/nginx/conf.d
-    depends_on:
-      - backend
-    networks:
-      - komprapp_network
-
   db:
     image: mysql:8.0
     container_name: komprapp_db
@@ -53,6 +40,19 @@ services:
     networks:
       - komprapp_network
 
+  web:
+    image: nginx:latest
+    container_name: komprapp_web
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - backend
+    networks:
+      - komprapp_network
+      
 volumes:
   dbdata:
 
