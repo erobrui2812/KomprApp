@@ -1,7 +1,5 @@
 # Laravel
 /vendor/
-/node_modules/
-/.env
 /storage/*.key
 /storage/debugbar/
 /storage/framework/cache/
@@ -11,9 +9,11 @@
 /public/storage
 /public/hot
 
+# Node.js (frontend y backend)
+**/node_modules/
+
 # Next.js
 /.next/
-/node_modules/
 /.env.local
 .env.development.local
 .env.test.local
@@ -33,4 +33,3 @@ yarn-error.log*
 Homestead.yaml
 Homestead.json
 /.vagrant
-

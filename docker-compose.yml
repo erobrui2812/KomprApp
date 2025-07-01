@@ -1,32 +1,32 @@
 services:
-  app:
+  backend:
     build:
       context: .
-      dockerfile: Dockerfile
-    image: php:8.2-fpm
-    container_name: laravel_app
+      dockerfile: Dockerfile.backend
+    container_name: komprapp_backend
     working_dir: /var/www
     volumes:
-      - ./:/var/www
+      - ./backend:/var/www
+      - ./backend/vendor:/var/www/vendor
     networks:
-      - laravel
+      - komprapp_network
 
   web:
     image: nginx:latest
-    container_name: laravel_web
+    container_name: komprapp_web
     ports:
       - "8000:80"
     volumes:
-      - ./:/var/www
+      - ./backend:/var/www
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
     depends_on:
-      - app
+      - backend
     networks:
-      - laravel
+      - komprapp_network
 
   db:
     image: mysql:8.0
-    container_name: laravel_db
+    container_name: komprapp_db
     restart: always
     environment:
       MYSQL_DATABASE: laravel
@@ -36,11 +36,26 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - laravel
+      - komprapp_network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: komprapp_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - HOST=0.0.0.0
+    networks:
+      - komprapp_network
 
 volumes:
   dbdata:
 
 networks:
-  laravel:
+  komprapp_network:
     driver: bridge
