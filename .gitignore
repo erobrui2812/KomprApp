@@ -1,30 +1,36 @@
+# Laravel
 /vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
+/node_modules/
+/.env
+/storage/*.key
+/storage/debugbar/
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+/bootstrap/cache/
+/public/storage
+/public/hot
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
+# Next.js
+/.next/
+/node_modules/
+/.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
+# Logs y caches
+npm-debug.log*
+yarn-error.log*
+.phpunit.result.cache
 
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
+# IDEs y editores
+/.idea/
+/.vscode/
+/*.code-workspace
 
-storage/*.key
-.env
+# Otros
 Homestead.yaml
 Homestead.json
 /.vagrant
-.phpunit.result.cache
 
-/public/build
-/storage/pail
-.env.backup
-.env.production
-.phpactor.json
-auth.json
