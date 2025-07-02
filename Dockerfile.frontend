@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY frontend/package*.json ./
 
+ENV PATH /app/node_modules/.bin:$PATH
+
 RUN npm install
 
 COPY frontend/ ./

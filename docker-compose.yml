@@ -29,19 +29,22 @@ services:
 
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.frontend
+        context: .
+        dockerfile: Dockerfile.frontend
     container_name: komprapp_frontend
     working_dir: /app
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
+        - ./frontend:/app
+        - /app/node_modules
     environment:
-      - HOST=0.0.0.0
-    expose:
-      - "3000"
+        - CHOKIDAR_USEPOLLING=true
+        - WATCHPACK_POLLING=true
+        - HOST=0.0.0.0
+    ports:
+        - "3000:3000"
     networks:
-      - komprapp_network
+        - komprapp_network
+
 
   web:
     image: nginx:latest
