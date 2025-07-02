@@ -1,7 +1,19 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Sidebar() {
+
+    const [open, setOpen] = useState(true);
+
+
   return (
-    <header className="p-4 bg-gray-100 shadow">
-      <div className="text-lg font-semibold">Hola</div>
-    </header>
+    <nav className="shadow-md h-screen w-60 p-2 border-r">
+        {/* Header */}
+        <div className="border px-3 py-2 h-20">
+            <img src="logo.png" alt="Logo"  className="w-10 rounded-md"/>
+
+        </div>
+    </nav>
   );
 }
